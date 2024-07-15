@@ -45,7 +45,7 @@ namespace IFXTopContributor.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutUser(int id, User user)
         {
-            if (id != user.Id)
+            if (id != user.Userid)
             {
                 return BadRequest();
             }
@@ -78,7 +78,7 @@ namespace IFXTopContributor.Controllers
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetUser", new { id = user.Id }, user);
+            return CreatedAtAction("GetUser", new { id = user.Userid }, user);
         }
 
         // DELETE: api/Users/5
@@ -97,22 +97,9 @@ namespace IFXTopContributor.Controllers
             return NoContent();
         }
 
-        //GET api/Users/roles
-        [HttpGet("roles")]
-        public async Task<ActionResult<IEnumerable<string>>> GetRoles()
-        {
-            var roles = await _context.Users                // working asynchronouysly because database queries can take a long time and this allows
-                                                                // the program function normally while actions are done.
-                                       .Select(u => u.Role) //takes each User entity (u) and selects only its Role property. Essentially,
-                                                                //it creates a sequence of roles from the Users table.
-                                       .Distinct()          // we are getting unique data and no duplicate roles
-                                       .ToListAsync();      //output as a list
-            return Ok(roles);
-        }
-
         private bool UserExists(int id)
         {
-            return _context.Users.Any(e => e.Id == id);
+            return _context.Users.Any(e => e.Userid == id);
         }
     }
 }
