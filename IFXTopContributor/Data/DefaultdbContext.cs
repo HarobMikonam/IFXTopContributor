@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using IFXTopContributor.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace IFXTopContributor.Models;
+namespace IFXTopContributor.Data;
 
 public partial class DefaultdbContext : DbContext
 {

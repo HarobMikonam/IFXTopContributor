@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using IFXTopContributor.Models;
+using IFXTopContributor.Data;
 
 namespace IFXTopContributor.Controllers
 {

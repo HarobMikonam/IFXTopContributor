@@ -9,11 +9,11 @@ public partial class User
     [Required]
     public int Userid { get; set; }
     [Required]
-    public string Firstname { get; set; } = null!;
+    public string Firstname { get; set; } = string.Empty;
     [Required]
-    public string Lastname { get; set; } = null!;
+    public string Lastname { get; set; } = string.Empty;
     [Required]
-    public string? Email { get; set; }
+    public string? Email { get; set; } = string.Empty;
     [Required]
     public bool Microsoftaccount { get; set; }
     [Required]
