@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using IFXTopContributor.Models;
+using IFXTopContributor.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 

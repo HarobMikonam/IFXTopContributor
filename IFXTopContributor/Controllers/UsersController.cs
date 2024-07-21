@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using IFXTopContributor.Models;
+using IFXTopContributor.Data;
 
 namespace IFXTopContributor.Controllers
 {
@@ -95,6 +96,19 @@ namespace IFXTopContributor.Controllers
             await _context.SaveChangesAsync();
 
             return NoContent();
+        }
+
+        //GET api/Users/roles
+        [HttpGet("roles")]
+        public async Task<ActionResult<IEnumerable<string>>> GetRoles()
+        {
+            var roles = await _context.Users                // working asynchronouysly because database queries can take a long time and this allows
+                                                                // the program function normally while actions are done.
+                                       .Select(u => u.Roleid) //takes each User entity (u) and selects only its Role property. Essentially,
+                                                              //it creates a sequence of roles from the Users table.
+                                                              // we are getting unique data and no duplicate roles .Distinct() 
+                                       .ToListAsync();      //output as a list
+            return Ok(roles);
         }
 
         private bool UserExists(int id)
